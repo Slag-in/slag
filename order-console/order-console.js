@@ -203,7 +203,7 @@ function renderOrder(orderData, key) {
     const invoiceLink = document.createElement('a');
     invoiceLink.className = 'btn small';
     invoiceLink.textContent = 'Generate Invoice';
-    invoiceLink.href = `http://127.0.0.1:5500/generate-invoice.html?order=${encodeURIComponent(orderData.paymentCode || key)}`;
+    invoiceLink.href = `https://slag.in/generate-invoice.html?order=${encodeURIComponent(orderData.paymentCode || key)}`;
     invoiceLink.target = '_blank';
 
     // WhatsApp Confirmation
@@ -392,3 +392,4 @@ function startOrdersListener() {
 
 // ---------- Start ----------
 window.addEventListener('load', showPasswordPrompt);
+
