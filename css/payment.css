@@ -250,10 +250,6 @@ footer {
   height: 22px;
 }
 
-.codBtnMobile {
-  display: none;
-}
-
 .cotBtnPC {
   display: block;
 }
@@ -397,9 +393,6 @@ footer {
 
   /* Show mobile navbar */
 
-.codBtnPC {
-  display: none;
-}
 
 .wait {
   width: 90%;
@@ -419,6 +412,10 @@ footer {
 
 .codBtnMobile {
   display: block;
+}
+
+#qrBtn {
+  display: none;
 }
 
 .mobile-nav {
