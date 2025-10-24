@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slag Invoice</title>
+  <!-- Standard favicon -->
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+
+  <!-- Apple Touch Icon (iPhone/iPad) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <!-- Android / PWA icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/web-app-manifest-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/web-app-manifest-512x512.png">
+
+  <!-- Theme & tile colors -->
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      padding: 40px 15px;
+      color: #222;
+    }
+
+    #invoice {
+      width: 800px;
+      background: #fff;
+      padding: 60px;
+      border-radius: 16px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .invoice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 50px;
+    }
+
+    .logo img {
+      width: 120px;
+      object-fit: contain;
+    }
+
+    .invoice-meta {
+      text-align: right;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .invoice-meta h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    /* Billed To Section */
+    .billed-to {
+      margin-bottom: 50px;
+    }
+
+    .billed-to strong {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .billed-to p {
+      margin: 2px 0;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* Items Section */
+    .items-section {
+      margin-bottom: 40px;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-name {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .item-qty-price {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .item-total {
+      min-width: 100px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    /* Totals */
+    .totals {
+      margin-top: 40px;
+      text-align: right;
+      border-top: 1.5px solid #000;
+      padding-top: 25px;
+    }
+
+    .totals p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .totals strong {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 60px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Button */
+    #downloadBtn {
+      margin-top: 35px;
+      display: block;
+      margin-left: auto;
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    #downloadBtn:hover {
+      background: #333;
+      transform: translateY(-1px);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ccc, transparent);
+      margin: 40px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div id="invoice">
+      <div class="invoice-header">
+        <div class="logo">
+          <img src="/assets/icons/logo.png" alt="Slag Logo">
+        </div>
+        <div class="invoice-meta">
+          <div id="invoiceNo"></div>
+          <div id="invoiceDate"></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <section class="billed-to">
+        <strong>Billed To:</strong>
+        <p id="customerName">N/A</p>
+        <p id="customerPhone">N/A</p>
+        <p id="customerAddress">N/A</p>
+        <p><span id="customerCity">N/A</span>, <span id="customerState">N/A</span>, <span
+            id="customerPincode">N/A</span></p>
+        <p id="customerCountry">N/A</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="items-section" id="itemsSection"></section>
+
+      <div class="totals">
+        <p>Subtotal: ₹<span id="subtotal">0</span></p>
+        <p>Delivery: ₹<span id="delivery">0</span></p>
+        <p><strong>Total: ₹<span id="grandTotal">0</span></strong></p>
+      </div>
+
+      <footer>
+        slag.in
+      </footer>
+    </div>
+
+    <button id="downloadBtn">Download Invoice</button>
+  </div>
+
+  <!-- 🔹 Modular Firebase + Invoice Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtt8sm0j6DhguOWHC7S6r0_8GUTQheGts",
+      authDomain: "slagdatabase.firebaseapp.com",
+      databaseURL: "https://slagdatabase-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "slagdatabase",
+      storageBucket: "slagdatabase.firebasestorage.app",
+      messagingSenderId: "161359818821",
+      appId: "1:161359818821:web:58322ee107921f5ca1332c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paymentCode = urlParams.get("order");
+
+      if (!paymentCode) {
+        alert("❌ Invalid order link!");
+        return;
+      }
+
+      // 🔹 Fetch all orders and filter manually
+      const snapshot = await get(ref(db, "orders"));
+      if (!snapshot.exists()) {
+        alert("❌ No orders found!");
+        return;
+      }
+
+      const orders = snapshot.val();
+      let orderData = null;
+      for (const key in orders) {
+        if (orders[key].paymentCode === paymentCode) {
+          orderData = orders[key];
+          break;
+        }
+      }
+
+      if (!orderData) {
+        alert("❌ Order not found!");
+        return;
+      }
+
+      const addressData = orderData.customer || {};
+      const cart = orderData.items || [];
+
+      // Populate invoice fields
+      document.getElementById("invoiceNo").textContent = "Invoice No. " + orderData.paymentCode;
+      document.getElementById("invoiceDate").textContent = new Date(orderData.timestamp).toLocaleDateString();
+      document.getElementById("customerName").textContent = addressData.name || "N/A";
+      document.getElementById("customerPhone").textContent = addressData.phone || "N/A";
+      document.getElementById("customerAddress").textContent = addressData.address || "N/A";
+      document.getElementById("customerCity").textContent = addressData.city || "N/A";
+      document.getElementById("customerState").textContent = addressData.state || "N/A";
+      document.getElementById("customerPincode").textContent = addressData.pincode || "N/A";
+      document.getElementById("customerCountry").textContent = addressData.country || "N/A";
+
+      // Populate items
+      const itemsSection = document.getElementById("itemsSection");
+      itemsSection.innerHTML = "";
+      let subtotal = 0;
+      cart.forEach(item => {
+        const qty = item.quantity || 1;
+        const total = item.price * qty;
+        subtotal += total;
+        const row = document.createElement("div");
+        row.classList.add("item-row");
+        row.innerHTML = `
+          <div class="item-details">
+            <div class="item-name">${item.title}</div>
+            <div class="item-qty-price">Qty: ${qty} × ₹${item.price.toLocaleString("en-IN")}</div>
+          </div>
+          <div class="item-total">₹${total.toLocaleString("en-IN")}</div>
+        `;
+        itemsSection.appendChild(row);
+      });
+
+      // 🔹 Determine delivery charge based on payment method
+      let deliveryCharge = 0;
+      if (orderData.paymentMethod && orderData.paymentMethod.toLowerCase() === "cash on delivery") {
+        deliveryCharge = 30;
+      }
+
+      // Populate totals
+      const grandTotal = subtotal + deliveryCharge;
+      document.getElementById("subtotal").textContent = subtotal.toLocaleString("en-IN");
+      document.getElementById("delivery").textContent = deliveryCharge.toLocaleString("en-IN");
+      document.getElementById("grandTotal").textContent = grandTotal.toLocaleString("en-IN");
+
+
+      // Download invoice
+      document.getElementById("downloadBtn").addEventListener("click", async () => {
+        const invoiceNode = document.getElementById("invoice");
+        const canvas = await html2canvas(invoiceNode, { scale: 2 });
+        canvas.toBlob(blob => {
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = `Invoice_${orderData.paymentCode}.png`;
+          link.click();
+          URL.revokeObjectURL(link.href);
+        }, "image/png");
+      });
+    });
+  </script>
+</body>
+
+</html>

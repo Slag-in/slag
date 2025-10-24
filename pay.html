@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pay — Slag</title>
+  <!-- Standard favicon -->
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+
+  <!-- Apple Touch Icon (iPhone/iPad) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <!-- Android / PWA icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/web-app-manifest-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/web-app-manifest-512x512.png">
+
+  <!-- Theme & tile colors -->
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #f6f7f8;
+    }
+
+    .card {
+      width: 420px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(20, 20, 30, 0.06);
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0 0 8px;
+    }
+
+    .meta {
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .upi {
+      background: #f2f4f6;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 0;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #034c3c;
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    #qrcode {
+      display: block;
+      margin: 12px auto 0;
+      width: 200px;
+      height: 200px;
+    }
+
+    .notice {
+      font-size: 12px;
+      color: #a00;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Slag Payment Gateway</h1>
+    <div class="meta" id="desc">Order Payment</div>
+
+    <div class="upi" id="upiBox">
+      <div id="amountText" style="font-size:18px">₹0.00</div>
+      <div id="vpaText" style="font-size:13px;margin-top:6px;color:#333">
+        VPA: <span id="vpa"></span>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <canvas id="qrcode"></canvas>
+    </div>
+
+    <div class="actions" style="margin-top:12px">
+      <button class="btn-primary" id="openBtn">Open in UPI app</button>
+      <button class="btn-ghost" id="copyBtn">Cancel payment</button>
+    </div>
+
+    <div class="small" id="helpText">
+      If the direct UPI payment fails, scan the QR or copy the UPI link to pay directly. <br><br>
+      No matter how you pay, you’ll receive order confirmation via WhatsApp within <b>12 hours</b>, and your product
+      will be packed within <b>24 hours</b> of successful payment.
+    </div>
+    <div class="notice" id="notice" aria-live="polite"></div>
+  </div>
+
+  <script>
+    // ================= CONFIG =================
+    const UPI_ID = "7736567531@okbizaxis"; // Your merchant UPI
+    const MERCHANT_NAME = "Slag";           // Payee name shown in app
+    const NOTE_PREFIX = "Order";            // Used for tn parameter
+
+    // ================= GET CART & ORDER DATA =================
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const grandTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+    const amount = grandTotal.toFixed(2);
+
+    // Fetch or generate payment/order ID
+    let orderId = localStorage.getItem("paymentCode");
+    if (!orderId) {
+      orderId = "ORD" + Date.now().toString().slice(-6);
+      localStorage.setItem("paymentCode", orderId);
+    }
+
+    // ================= BUILD UPI LINK =================
+    function buildUpiLink() {
+      const tn = `${NOTE_PREFIX}-${orderId}`;
+      const tr = orderId;
+      const params = [
+        ["pa", UPI_ID],
+        ["pn", MERCHANT_NAME],
+        ["am", amount],
+        ["cu", "INR"],
+        ["tn", tn],
+        ["tr", tr]
+      ]
+        .map(p => `${p[0]}=${encodeURIComponent(p[1])}`)
+        .join("&");
+      return `upi://pay?${params}`;
+    }
+
+    // Intent URI for Android direct open
+    function buildIntentUri(upiLink) {
+      const stripped = upiLink.replace(/^upi:\/\//, "");
+      return `intent://${stripped}#Intent;scheme=upi;end`;
+    }
+
+    // ================= DRAW QR =================
+    function drawQR(text, canvas) {
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+      const encoded = encodeURIComponent(text);
+      const url = `https://quickchart.io/qr?text=${encoded}&size=200`;
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      };
+      img.onerror = () => {
+        ctx.fillStyle = "#999";
+        ctx.font = "12px sans-serif";
+        ctx.fillText("QR not available", 40, canvas.height / 2);
+      };
+      img.src = url;
+    }
+
+    // ================= UPDATE UI =================
+    const amountText = document.getElementById("amountText");
+    const vpaText = document.getElementById("vpa");
+    const desc = document.getElementById("desc");
+    const canvas = document.getElementById("qrcode");
+    const notice = document.getElementById("notice");
+
+    amountText.textContent = `₹${amount}`;
+    vpaText.textContent = UPI_ID;
+    desc.textContent = `${MERCHANT_NAME} • ${NOTE_PREFIX}-${orderId}`;
+
+    canvas.width = 200;
+    canvas.height = 200;
+
+    const upiLink = buildUpiLink();
+    const intentUri = buildIntentUri(upiLink);
+    drawQR(upiLink, canvas);
+
+    // ================= BUTTON ACTIONS =================
+    document.getElementById("openBtn").addEventListener("click", () => {
+      const ua = navigator.userAgent;
+      try {
+        if (/Android/i.test(ua)) {
+          location.href = intentUri;
+          setTimeout(() => (location.href = upiLink), 1000);
+        } else {
+          location.href = upiLink;
+        }
+        notice.textContent = "Opening your UPI app...";
+      } catch (err) {
+        notice.textContent = "Could not open automatically. Please scan or copy.";
+      }
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      window.location.href = "/index.html"
+    });
+
+
+  </script>
+</body>
+
+</html>

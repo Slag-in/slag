@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delivery Address - Slag</title>
+    <link rel="stylesheet" href="/css/address.css" />
+    <!-- Standard favicon -->
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+    <link rel="alternate icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+
+    <!-- Apple Touch Icon (iPhone/iPad) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <!-- Android / PWA icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/web-app-manifest-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/web-app-manifest-512x512.png">
+
+    <!-- Theme & tile colors -->
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar-container">
+            <div class="navbar">
+                <div class="nav-left">
+                    <a href="/index.html">New Arrivals</a>
+                    <a href="/gallery.html">Gallery</a>
+                    <a href="/terms.html">Terms</a>
+                </div>
+
+                <div class="nav-logo">
+                    <span>Slag</span>
+                </div>
+
+                <div class="nav-right">
+                    <a href="/support.html">Support</a>
+                    <a href="/contact.html">Contact us</a>
+                    <a id="cartOpen" href="javascript:void(0)">Cart</a>
+                </div>
+            </div>
+
+            <!-- Mobile Navbar Icons -->
+            <div class="mobile-nav" id="mobileNav">
+                <div class="nav-logo-mobile" id="navLogo">
+                    <img src="assets/icons/logo.svg" alt="">
+                </div>
+                <div class="menu-icon" id="menuToggle">
+                    <img src="assets/icons/menu-black.svg" alt="Menu" id="menuIcon">
+                </div>
+            </div>
+
+
+            <!-- Mobile Slide Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="/index.html">New Arrivals</a>
+                <a href="/gallery.html">Gallery</a>
+                <a href="/terms.html">Terms</a>
+                <a href="/support.html">Support</a>
+                <a href="/contact.html">Contact us</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <h2 class="title">Delivery address</h2>
+
+            <div class="form-container">
+                <form id="addressForm">
+                    <section class="contact">
+                        <h3>Contact</h3>
+                        <label>WhatsApp number</label>
+                        <div class="phone-row">
+                            <input type="text" value="+91" readonly class="country-code">
+                            <input type="text" id="phone" placeholder="00000 00000" required>
+                        </div>
+
+                        <label>Email (optional)</label>
+                        <input type="email" id="email" placeholder="slagofficial@email.com">
+                    </section>
+
+                    <section class="delivery">
+                        <h3>Delivery</h3>
+                        <label>Country</label>
+                        <input type="text" id="country" value="India" readonly>
+                        <small class="note">*Only India delivery available now</small>
+
+                        <label>Full name</label>
+                        <input type="text" id="fullname" required>
+
+                        <label>Address</label>
+                        <input type="text" id="address" required>
+
+                        <label>Apartment/house number (optional)</label>
+                        <input type="text" id="apartment">
+
+                        <div class="state-row">
+                            <div>
+                                <label>State</label>
+                                <select id="state">
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+
+                                </select>
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <input type="text" id="city">
+                            </div>
+                            <div>
+                                <label>PIN code</label>
+                                <input type="text" id="pincode">
+                            </div>
+                        </div>
+
+                        <div class="checkboxes">
+                            <p>By proceeding with your purchase, you agree to abide by Slag’s <a
+                                    href="/terms.html">terms and policy</a> and confirms all the delivery details are
+                                correct.</p>
+                        </div>
+
+                        <button type="submit" class="proceed-btn">Proceed to Payment</button>
+                    </section>
+                </form>
+
+                <aside class="items">
+                    <h3>Items</h3>
+                    <div id="cartItems"></div>
+                    <div class="total">Total: ₹<span id="totalAmount">0</span></div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="innerfooter">
+            <div class="linkContainer">
+                <a href="/contact.html">Contact Us</a>
+                <a href="/support.html">Support</a>
+                <a href="/terms.html">Terms</a>
+            </div>
+            <div class="linkContainer">
+                <a href="mailto:slagproductionsofficial@gmail.com">Mail us</a>
+                <a href="https://www.threads.net/slag.in">Threads</a>
+                <a href="https://www.instagram.com/slag.in">Instagram</a>
+            </div>
+            <div class="logoContainer">
+                <img src="assets/icons/logo.svg" alt="">
+            </div>
+        </div>
+    </footer>
+
+    <div class="copyright">© 2025 Slag.in</div>
+
+    <script src="/js/address.js"></script>
+    <script src="/js/otherpageNavbar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/productPage.css">
+  <title>Slag RF'3</title>
+  <!-- Standard favicon -->
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+
+  <!-- Apple Touch Icon (iPhone/iPad) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <!-- Android / PWA icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/web-app-manifest-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/web-app-manifest-512x512.png">
+
+  <!-- Theme & tile colors -->
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar-container">
+      <div class="navbar">
+        <div class="nav-left">
+          <a href="/index.html">New Arrivals</a>
+          <a href="#">Inside Slag</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+
+        <div class="nav-logo">
+          <span>Slag</span>
+        </div>
+
+        <div class="nav-right">
+          <a href="/support.html">Support</a>
+          <a href="/contact.html">Contact us</a>
+          <a id="cartOpen" href="javascript:void(0)">Cart</a>
+        </div>
+      </div>
+      <!-- Mobile Navbar Icons -->
+      <div class="mobile-nav" id="mobileNav">
+        <div class="menu-icon" id="menuToggle">
+          <img src="/assets/icons/menu-black.svg" alt="Menu" id="menuIcon">
+        </div>
+
+        <div class="nav-logo-mobile" id="navLogo">
+          <img src="/assets/icons/logo.svg" alt="">
+        </div>
+
+        <div class="cart-icon" id="cartIcon">
+          <img src="/assets/icons/cart-black.svg" alt="Cart" id="cartImg" href="javascript:void(0)">
+        </div>
+      </div>
+
+      <!-- Mobile Slide Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="/index.html">New Arrivals</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+        <a href="/contact.html">Contact us</a>
+      </div>
+    </nav>
+  </header>
+  <main class="product">
+    <div class="product-images">
+      <div class="main-image">
+        <div class="slider-track" id="sliderTrack">
+          <img src="images/dress1.webp" alt="Product Image 1">
+          <img src="images/dress2.webp" alt="Product Image 2">
+          <img src="images/dress3.webp" alt="Product Image 3">
+          <img src="images/dress4.webp" alt="Product Image 4">
+        </div>
+      </div>
+
+      <div class="thumbnails">
+        <img src="images/dress1.webp" class="thumb active" alt="Thumbnail 1">
+        <img src="images/dress2.webp" class="thumb" alt="Thumbnail 2">
+        <img src="images/dress3.webp" class="thumb" alt="Thumbnail 3">
+        <img src="images/dress4.webp" class="thumb" alt="Thumbnail 4">
+      </div>
+
+    </div>
+
+    <div class="product-details">
+      <div class="price-box">
+        <div class="product-title">Slag RF’3 - Park Avenue Thrift</div>
+        <div class="product-price">₹549</div>
+      </div>
+
+      <div class="measurements">
+        <div class="measure-box">
+          <p>Chest</p>
+          <h3>46″</h3>
+        </div>
+        <div class="measure-box">
+          <p>Shoulder</p>
+          <h3>18″</h3>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="buy-now">Buy Now</button>
+        <button class="add-cart">Add to cart</button>
+      </div>
+
+      <div class="shipping-info">
+        The product will be shipped within 48 hours of order.<br>
+        Free all India shipping.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="innerfooter">
+      <div class="linkContainer">
+        <a href="/contact.html">Contact Us</a>
+        <a href="/support.html">Support</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+      <div class="linkContainer">
+        <a href="mailto:slagproductionsofficial@gmail.com">Mail us</a>
+        <a href="https://www.threads.net/slag.in">Threads</a>
+        <a href="https://www.instagram.com/slag.in">Instagram</a>
+      </div>
+      <div class="logoContainer">
+        <img src="/assets/icons/logo.svg" alt="">
+      </div>
+    </div>
+  </footer>
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h2>Your cart</h2>
+      <span id="closeCart" class="close-cart">✕</span>
+    </div>
+
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="cart-footer">
+      <div id="cartTotal" class="cart-total">Total: ₹0</div>
+      <button id="checkoutBtn" class="checkout-btn">Check out</button>
+    </div>
+  </div>
+
+
+  <div class="copyright">© 2025 Slag.in</div>
+
+  <script type="module" src="/js/productPage.js"></script>
+  <script src="/js/otherpageNavbar.js"></script>
+  <script type="module" src="/js/database.js"></script>
+  <script type="module" src="/js/codPayment.js"></script>
+</body>
+
+</html>

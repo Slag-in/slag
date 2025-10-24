@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Slag — Order Console</title>
+<link rel="stylesheet" href="/order-console/order-console.css" />
+<!-- Firebase SDKs (modular) -->
+<script type="module" src="/order-console/order-console.js" defer></script>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+<div class="brand">
+<img src="/assets/icons/logo.svg" alt="Slag logo" class="logo" />
+<h1>Order Console</h1>
+</div>
+<div class="last-order" id="lastOrder">Last order: —</div>
+</header>
+
+
+<main class="content">
+<section id="orders" class="orders">
+<!-- Orders will be injected here -->
+</section>
+</main>
+
+
+<footer class="footer">Slag — Order Receiving Console</footer>
+</div>
+
+
+<!-- Password Modal -->
+<div id="pwModal" class="modal">
+<div class="modal-card">
+<h2>Enter daily password</h2>
+<p class="modal-desc">A daily password is required to access this console.</p>
+<input id="pwInput" type="password" placeholder="Password" autocomplete="off" />
+<div class="modal-actions">
+<button id="pwSubmit" class="btn">Enter</button>
+</div>
+<p class="modal-info">If the password hasn't been generated yet, this client will create and store it in Firebase for today.</p>
+</div>
+</div>
+
+
+<!-- Toast area -->
+<div id="toast" class="toast" aria-live="polite"></div>
+
+
+<!-- Firebase config (kept in app.js too) -->
+</body>
+</html>

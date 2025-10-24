@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slag COD confirmation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Standard favicon -->
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+
+  <!-- Apple Touch Icon (iPhone/iPad) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <!-- Android / PWA icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/web-app-manifest-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/web-app-manifest-512x512.png">
+
+  <!-- Theme & tile colors -->
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #f7f8fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #111;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 32px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .details {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .details p {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 0.95rem;
+    }
+
+    .details p span {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .total {
+      border-top: 1px solid #e5e7eb;
+      margin-top: 12px;
+      padding-top: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 0;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    button:hover {
+      background: #333;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .order-id {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px;
+        padding: 30px 24px;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Cash on Delivery</h1>
+    <div class="details">
+      <p>Product Price: <span id="productPrice">₹0</span></p>
+      <p>COD Charge: <span>₹30</span></p>
+      <p class="total">Total Payable: <span id="grandTotal">₹0</span></p>
+    </div>
+
+    <button class="confirmBtn" id="confirmBtn">Confirm Order</button>
+
+    <p class="order-id">Order ID: <span id="orderId">—</span></p>
+  </div>
+
+  <script type="module" src="/js/codPayment.js"></script>
+  <script type="module" src="/js/database.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,487 @@
+/* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* Use it like this */
+
+body {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Navbar Container */
+.navbar-container {
+  width: 100%;
+  border-bottom: 0;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 14px;
+}
+
+/* Left and right sections positioned absolutely */
+.nav-left,
+.nav-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 30px;
+}
+
+.nav-left {
+  left: 0;
+}
+
+.nav-right {
+  right: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #545454;
+  transition: opacity 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 0.6;
+}
+
+/* Centered Logo */
+.nav-logo span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 34px;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-align: center;
+}
+
+.checkout-container {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.checkout-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.checkout-total {
+  width: 45%;
+  text-align: left;
+}
+
+.total-label {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #545454;
+}
+
+.total-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #111;
+  height: 50px;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.total-box .currency {
+    border-right: solid 1px #000;
+    padding-right: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+#proceedBtn {
+  background: #111;
+  color: white;
+  border: none;
+  padding: 16px 30px;
+  cursor: pointer;
+  margin-top: 0px;
+  transform: translateX(2px);
+  font-size: 14px;
+  font-family: "Instrument Serif", serif;
+}
+
+.delivery-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
+}
+
+.checkout-items {
+  width: 45%;
+  text-align: right;
+}
+
+.checkout-items h3 {
+    color: #545454;
+    font-weight: 600;
+}
+
+.item-list {
+  margin-top: 15px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details p {
+  margin: 3px 0;
+  text-align: left;
+}
+
+footer {
+  background-color: #f9f9f9;
+  padding: 30px 0;
+  margin-top: 80px;
+}
+
+.innerfooter {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.logoContainer span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 40px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 11px;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .checkout-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkout-total, .checkout-items {
+    width: 100%;
+  }
+}
+
+footer {
+  height: 300px;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.innerfooter {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.innerfooter .linkContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkContainer a {
+  margin: 10px;
+  text-decoration: none;
+  color: #545454;
+  font-size: 14px;
+}
+
+.linkContainer a:hover {
+  text-decoration: underline;
+}
+
+.logoContainer span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 36px;
+}
+
+.copyright {
+    width: 100%;
+    background-color: #f6f6f6;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.mobile-nav {
+  display: none;
+  width: 100%;
+  padding: 14px 20px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-icon, .cart-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-icon img, .cart-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-logo-mobile span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 30px;
+}
+
+/* Mobile menu panel */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px;
+  gap: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  color: #666;
+}
+
+/* ========================= */
+/* 🖥️ Responsive Visibility */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+  .products {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .product {
+    width: 45%;
+  }
+
+  footer {
+    height: auto;
+    padding: 40px 20px;
+    margin: 0;
+  }
+
+  .innerfooter {
+    flex-direction: row;
+    align-items:center;
+  }
+
+  .linkContainer {
+    align-items: left;
+  }
+
+  .linkContainer a {
+        font-size: 12px;
+  }
+
+  .seperater div {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 0px;
+  }
+}
+
+/* --- Responsive Navbar Visibility --- */
+@media (max-width: 768px) {
+  /* Hide desktop navbar on mobile */
+  .navbar {
+    display: none;
+  }
+
+  /* Show mobile navbar */
+
+  
+.mobile-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+
+  .products {
+    justify-content: space-between;
+    gap: 0px;
+  }
+
+  .product {
+    overflow: hidden;
+    width: 49%;
+    margin-top: 20px;
+  }
+
+  .product .photo {
+    position: relative;
+    height: 25%;
+  }
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  background: #fff;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-bottom: #f6f6f6 solid 1px;
+}
+  
+  .mobile-navbar {
+    display: flex;
+  }
+
+  .seperater div {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .hero {
+    height: fit-content;
+    z-index: -1;
+  }
+
+.nav-logo-mobile span {
+  color: black;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-scrolled {
+  background: white !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.nav-scrolled .nav-logo-mobile span {
+  color: black;
+}
+
+.cart-sidebar {
+  width: 80%;
+  right: -80%;
+}
+
+.cart-items {
+  font-size: 10px;
+}
+
+.cart-item-info p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.cart-item-info .price {
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.checkout-container {
+  margin-top: 100px;
+  width: 80%;
+}
+
+}
+
+@media (min-width: 769px) {
+  /* Hide mobile navbar on PC */
+  .mobile-navbar {
+    display: none;
+  }
+}
+
+
+.logoContainer img {
+  width: 50px;
+}
+
+.nav-logo-mobile img {
+  width: 40px;
+}

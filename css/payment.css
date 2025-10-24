@@ -1,0 +1,538 @@
+/* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* Use it like this */
+
+body {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+  background: #fff;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar Container */
+.navbar-container {
+  width: 100%;
+  border-bottom: 0;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 14px;
+}
+
+/* Left and right sections positioned absolutely */
+.nav-left,
+.nav-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 30px;
+}
+
+.nav-left {
+  left: 0;
+}
+
+.nav-right {
+  right: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #545454;
+  transition: opacity 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 0.6;
+}
+
+/* Centered Logo */
+.nav-logo span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 34px;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Main Section */
+.payment {
+  text-align: center;
+  margin: 60px auto;
+  max-width: 700px;
+}
+.payment h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+}
+.total-value {
+  font-weight: bold;
+}
+.payment-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+.payment-options button {
+  padding: 20px 35px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Instrument Serif", serif;
+}
+.payment-options button:hover {
+  background: #000;
+  color: #fff;
+}
+.payment-options .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.cod-note {
+  font-size: 12px;
+  color: #d00;
+  margin-top: 2px;
+  text-align: right;
+  transform: translateX(-120px);
+}
+.disclaimer {
+  margin-top: 50px;
+  font-size: 12px;
+  color: #444;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 350px;
+  text-align: center;
+  margin: 150px auto;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+.close {
+  position: absolute;
+  right: 15px; top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.qr-img {
+  width: 180px;
+  height: 180px;
+  transform: translateX(-10px);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.modal p {
+    margin-top: 10px;
+}
+
+footer {
+  height: 300px;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.innerfooter {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.innerfooter .linkContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkContainer a {
+  margin: 10px;
+  text-decoration: none;
+  color: #545454;
+  font-size: 14px;
+}
+
+.linkContainer a:hover {
+  text-decoration: underline;
+}
+
+.logoContainer span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 36px;
+}
+
+
+.copyright {
+    width: 100%;
+    background-color: #f6f6f6;
+    margin-top: 20px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.mobile-nav {
+  display: none;
+  width: 100%;
+  padding: 14px 20px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-icon, .cart-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-icon img, .cart-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.codBtnMobile {
+  display: none;
+}
+
+.cotBtnPC {
+  display: block;
+}
+
+.nav-logo-mobile span {
+  font-family: 'Brittany Signature', cursive;
+  font-size: 30px;
+}
+
+/* Mobile menu panel */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px;
+  gap: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  color: #666;
+}
+
+.waitContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #0000004d;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  display: none;
+}
+
+.wait {
+  width: 40%;
+  height: 150px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.wait p {
+  margin-top: 5px;
+}
+
+.waitContainer2 {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #0000004d;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  display: none;
+}
+
+.wait2 {
+  width: 40%;
+  height: 150px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* ========================= */
+/* 🖥️ Responsive Visibility */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+  .products {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .product {
+    width: 45%;
+  }
+
+  footer {
+    height: auto;
+    padding: 40px 20px;
+    margin: 0;
+  }
+
+  .innerfooter {
+    flex-direction: row;
+    align-items:center;
+  }
+
+  .linkContainer {
+    align-items: left;
+  }
+
+  .linkContainer a {
+        font-size: 12px;
+  }
+
+  .seperater div {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 0px;
+  }
+}
+
+/* --- Responsive Navbar Visibility --- */
+@media (max-width: 768px) {
+  /* Hide desktop navbar on mobile */
+  .navbar {
+    display: none;
+  }
+
+  /* Show mobile navbar */
+
+.codBtnPC {
+  display: none;
+}
+
+.wait {
+  width: 90%;
+}
+
+.wait p {
+  font-size: 13px;
+}
+
+.wait2 {
+  width: 90%;
+}
+
+.wait2 p {
+  font-size: 13px;
+}
+
+.codBtnMobile {
+  display: block;
+}
+
+.mobile-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.payment-options button:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+  .products {
+    justify-content: space-between;
+    gap: 0px;
+  }
+
+  .product {
+    overflow: hidden;
+    width: 49%;
+    margin-top: 20px;
+  }
+
+  .product .photo {
+    position: relative;
+    height: 25%;
+  }
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  background: #fff;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-bottom: #f6f6f6 solid 1px;
+}
+  
+  .mobile-navbar {
+    display: flex;
+  }
+
+  .seperater div {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .hero {
+    height: fit-content;
+    z-index: -1;
+  }
+
+.nav-logo-mobile span {
+  color: black;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-scrolled {
+  background: white !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.nav-scrolled .nav-logo-mobile span {
+  color: black;
+}
+
+.cart-sidebar {
+  width: 80%;
+  right: -80%;
+}
+
+.cart-items {
+  font-size: 10px;
+}
+
+.cart-item-info p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.cart-item-info .price {
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.payment {
+  margin-top: 100px;
+  width: 80%;
+}
+
+}
+
+@media (min-width: 769px) {
+  /* Hide mobile navbar on PC */
+  .mobile-navbar {
+    display: none;
+  }
+}
+
+
+.logoContainer img {
+  width: 50px;
+}
+
+.nav-logo-mobile img {
+  width: 40px;
+}
