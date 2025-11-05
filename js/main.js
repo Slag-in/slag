@@ -10,6 +10,9 @@ document.getElementById('rf3').addEventListener('click', function() {
     window.location.href = "/productPage/rf3/slag-rf3.html";
 });
 
+document.getElementById('rf4').addEventListener('click', function() {
+    window.location.href = "/productPage/rf4/slag-rf4.html";
+});
 
 // --- CART SYSTEM ---
 
@@ -176,3 +179,4 @@ document.getElementById("cartIcon").addEventListener("click", () => {
       loadCart();
     cartSidebar.classList.add('open');
 });
+
